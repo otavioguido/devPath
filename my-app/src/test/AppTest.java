@@ -1,4 +1,4 @@
-package com.osilva.devpath;
+package src.test;
 
 import static org.junit.Assert.assertTrue;
 

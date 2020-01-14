@@ -1,4 +1,4 @@
-package com.osilva.devpath;
+package src.App;
 
 /**
  * Hello world!
