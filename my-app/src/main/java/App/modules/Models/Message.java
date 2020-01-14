@@ -1,4 +1,4 @@
-package src.App.Models;
+package modules.Models;
 
 import java.util.UUID;
 

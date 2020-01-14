@@ -1,4 +1,4 @@
-package src.App;
+package modules;
 
 /**
  * Hello world!
