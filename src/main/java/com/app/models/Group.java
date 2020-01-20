@@ -1,4 +1,4 @@
-package modules.Models;
+package com.app.models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,12 +9,20 @@ public class Group extends Chat {
 
   private Group(){}
 
+  public String getName() {
+    return name;
+  }
+
+  public List<User> getUsers() {
+    return users;
+  }
+
   public static class Builder{
     private List<User> initialUsers;
     private String name;
 
     public Builder setInitialUsers(List<User> initialUsers){
-      this.initialUsers = new ArrayList<User>(initialUsers);
+      this.initialUsers = initialUsers;
       return this;
     }
 

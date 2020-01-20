@@ -1,4 +1,4 @@
-package modules;
+package com.app;
 
 /**
  * Hello world!

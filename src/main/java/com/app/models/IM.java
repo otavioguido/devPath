@@ -1,8 +1,7 @@
-package modules.Models;
+package com.app.models;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class IM extends Chat {
   private final ArrayList<User> users = new ArrayList<User>(2);
