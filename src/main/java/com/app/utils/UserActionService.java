@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.List;
 import static com.app.utils.Constants.*;
 
-public abstract class UserActionService {
+public class UserActionService {
   private static final Logger LOGGER = LogManager.getLogger(UserActionService.class);
 
   public void searchUser(String name){
@@ -33,13 +33,15 @@ public abstract class UserActionService {
     return;
   }
 
-  public void createGroup(List<User> userList, String groupName){
+  public Group createGroup(List<User> userList, String groupName){
     LOGGER.info(CREATE_GROUP);
     Group group = new Group.Builder().setInitialUsers(userList).setName(groupName).build();
 
     for (User user : userList){
       user.getGroups().add(group);
     }
+
+    return group;
   }
 
   public void sendMessageToGroup(Message message, User sender, Group group) throws Exception {
@@ -49,6 +51,7 @@ public abstract class UserActionService {
     for (Group userGroups : sender.getGroups()){
       if (userGroups.getId().equals(group.getId())){
         userGroups.getMessages().add(message);
+        return;
       }
     }
     throw new Exception(GROUP_NOT_FOUND);
