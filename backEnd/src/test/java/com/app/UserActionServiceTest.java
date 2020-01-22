@@ -1,3 +1,5 @@
+package com.app;
+
 import com.app.models.*;
 
 import com.app.utils.UserActionService;
