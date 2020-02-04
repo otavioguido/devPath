@@ -1,18 +1,25 @@
-package com.app.models;
+package com.osilva.dataBase.models;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class User {
-  private final String id = UUID.randomUUID().toString();
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private long id;
+  private String login;
+  private String password;
   private String name;
   private List<IM> ims = new ArrayList<IM>();
   private List<Group> groups = new ArrayList<Group>();
 
   private User() {}
 
-  public String getId() {
+  public long getId() {
     return id;
   }
 

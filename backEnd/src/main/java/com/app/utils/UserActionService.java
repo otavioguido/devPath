@@ -1,7 +1,10 @@
 package com.app.utils;
 
 
-import com.app.models.*;
+import com.osilva.dataBase.models.Group;
+import com.osilva.dataBase.models.IM;
+import com.osilva.dataBase.models.Message;
+import com.osilva.dataBase.models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.List;

@@ -1,7 +1,5 @@
 package com.app;
 
-import com.app.models.*;
-
 import com.app.utils.UserActionService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

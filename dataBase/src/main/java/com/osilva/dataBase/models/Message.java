@@ -1,12 +1,16 @@
-package com.app.models;
+package com.osilva.dataBase.models;
 
-import java.util.UUID;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 public class Message {
-  private final String id = UUID.randomUUID().toString();
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private long id;
   private String content;
 
-  public String getId() {
+  public long getId() {
     return id;
   }
 

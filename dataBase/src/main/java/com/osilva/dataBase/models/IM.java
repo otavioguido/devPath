@@ -1,4 +1,4 @@
-package com.app.models;
+package com.osilva.dataBase.models;
 
 
 import java.util.ArrayList;
