@@ -1,39 +1,43 @@
 package com.osilva.dataBase.models;
 
 
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
+@Entity
 public class IM extends Chat {
-  private final ArrayList<User> users = new ArrayList<User>(2);
+  @Column(name = "User")
+  @ElementCollection(targetClass = User.class)
+  private List<User> users = new ArrayList<User>(2);
 
-  private IM(){}
+  protected IM(){}
 
-  public ArrayList<User> getUsers() {
+  private IM(List<User> users){
+    this.users = users;
+  }
+
+  @OneToMany
+  @JoinColumn(name = "USER_ID")
+  public List<User> getUsers() {
     return users;
   }
 
+  public static Builder builder(){
+    return new Builder();
+  }
+
   public static class Builder{
-    private User user1;
-    private User user2;
-    private Message message;
+    private List<User> users = new ArrayList<User>(2);
 
     public Builder setUsers(User user1, User user2){
-      this.user1 = user1;
-      this.user2 = user2;
-      return this;
-    }
-
-    public Builder setMessage(Message message){
-      this.message = message;
+      this.users.add(user1);
+      this.users.add(user2);
       return this;
     }
 
     public IM build(){
-      IM im = new IM();
-      im.users.add(user1);
-      im.users.add(user2);
-      im.messages.add(message);
-      return im;
+      return new IM(users);
     }
   }
 }

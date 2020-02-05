@@ -1,14 +1,23 @@
 package com.osilva.dataBase.models;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 public class Message {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
   private String content;
+
+  protected Message() {
+  }
+
+  private Message(String content){
+    this.content = content;
+  }
 
   public long getId() {
     return id;
@@ -18,7 +27,8 @@ public class Message {
     return content;
   }
 
-  private Message() {
+  public static Builder builder(){
+    return new Builder();
   }
 
   public static class Builder{
@@ -30,9 +40,7 @@ public class Message {
     }
 
     public Message build(){
-      Message message = new Message();
-      message.content = content;
-      return message;
+      return new Message(content);
     }
   }
 }

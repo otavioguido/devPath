@@ -1,7 +1,4 @@
-FROM ubuntu
-WORKDIR /app
-RUN apt-get update -y
-RUN apt-get upgrade -y
-RUN sudo apt install mysql-client-core-5.7 -y
-COPY . /src
-COPY . /target
+FROM openjdk:8
+ADD target/dataBase-0.0.1-SNAPSHOT.jar dataBase.jar
+EXPOSE 8089
+ENTRYPOINT ["java", "-jar", "dataBase.jar"]

@@ -1,11 +1,10 @@
 package com.osilva.dataBase.models;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class User {
 
   @Id
@@ -14,10 +13,20 @@ public class User {
   private String login;
   private String password;
   private String name;
+  @Column(name = "IM")
+  @ElementCollection(targetClass = IM.class)
   private List<IM> ims = new ArrayList<IM>();
+  @Column(name = "Group")
+  @ElementCollection(targetClass = Group.class)
   private List<Group> groups = new ArrayList<Group>();
 
-  private User() {}
+  protected User() {}
+
+  private User(String login, String password, String name){
+    this.login = login;
+    this.password = password;
+    this.name = name;
+  }
 
   public long getId() {
     return id;
@@ -27,26 +36,52 @@ public class User {
     return name;
   }
 
+  public String getLogin() {
+    return login;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  @OneToMany
+  @JoinColumn(name = "IM_ID")
   public List<IM> getIms() {
     return ims;
   }
 
+  @OneToMany
+  @JoinColumn(name = "GROUP_ID")
   public List<Group> getGroups() {
     return groups;
   }
 
+  public static Builder builder(){
+    return new Builder();
+  }
+
   public static class Builder{
     private String name;
+    private String login;
+    private String password;
 
     public Builder setName(String name){
       this.name = name;
       return this;
     }
 
+    public Builder setLogin(String login){
+      this.login = login;
+      return this;
+    }
+
+    public Builder setPassword(String password){
+      this.password = password;
+      return this;
+    }
+
     public User build(){
-      User user = new User();
-      user.name = name;
-      return user;
+      return new User(login, password, name);
     }
   }
 }

@@ -1,20 +1,35 @@
 package com.osilva.dataBase.models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Group extends Chat {
   private String name;
+  @Column(name = "User")
+  @ElementCollection(targetClass = User.class)
   private List<User> users;
 
-  private Group(){}
+  protected Group(){}
+
+  private Group(String name, List<User> users){
+    this.name = name;
+    this.users = users;
+  }
 
   public String getName() {
     return name;
   }
 
+  @OneToMany
+  @JoinColumn(name = "USER_ID")
   public List<User> getUsers() {
     return users;
+  }
+
+  public static Builder builder(){
+    return new Builder();
   }
 
   public static class Builder{
@@ -32,10 +47,7 @@ public class Group extends Chat {
     }
 
     public Group build(){
-      Group group = new Group();
-      group.users = new ArrayList<User>(initialUsers);
-      group.name = name;
-      return group;
+      return new Group(name, initialUsers);
     }
   }
 }
