@@ -9,9 +9,11 @@ public abstract class Chat {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
-  @Column(name = "Message")
-  @ElementCollection(targetClass = Message.class)
+  @OneToMany(cascade = CascadeType.ALL)
   protected List<Message> messages = new ArrayList<Message>();
+
+  public Chat() {
+  }
 
   public List<Message> getMessages() {
     return this.messages;

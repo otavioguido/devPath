@@ -1,6 +1,6 @@
 package com.osilva.dataBase;
 
-import com.osilva.dataBase.models.Group;
+import com.osilva.dataBase.models.GroupChat;
 import com.osilva.dataBase.models.IM;
 import com.osilva.dataBase.models.Message;
 import com.osilva.dataBase.models.User;
@@ -62,14 +62,14 @@ public class ChatController {
     public Iterable<IM> getAllIms() { return chatService.getAllIms(); }
 
     @PostMapping("/createGroup")
-    public Long createGroup(@RequestBody Group group){
-        chatService.saveGroup(group);
-        return group.getId();
+    public Long createGroup(@RequestBody GroupChat groupChat){
+        chatService.saveGroup(groupChat);
+        return groupChat.getId();
     }
 
     @GetMapping("/getGroups")
-    public Iterable<Group> getGroups(Iterable<Long> ids) { return  chatService.getGroupsFromUser(ids); }
+    public Iterable<GroupChat> getGroups(Iterable<Long> ids) { return  chatService.getGroupsFromUser(ids); }
 
     @GetMapping("/getAllGroups")
-    public Iterable<Group> getAllGroups() { return chatService.getAllGroups(); }
+    public Iterable<GroupChat> getAllGroups() { return chatService.getAllGroups(); }
 }

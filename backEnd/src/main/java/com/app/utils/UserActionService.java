@@ -1,7 +1,7 @@
 package com.app.utils;
 
 
-import com.osilva.dataBase.models.Group;
+import com.osilva.dataBase.models.GroupChat;
 import com.osilva.dataBase.models.IM;
 import com.osilva.dataBase.models.Message;
 import com.osilva.dataBase.models.User;
@@ -36,23 +36,23 @@ public class UserActionService {
     return;
   }
 
-  public Group createGroup(List<User> userList, String groupName){
+  public GroupChat createGroup(List<User> userList, String groupName){
     LOGGER.info(CREATE_GROUP);
-    Group group = new Group.Builder().setInitialUsers(userList).setName(groupName).build();
+    GroupChat groupChat = new GroupChat.Builder().setInitialUsers(userList).setName(groupName).build();
 
     for (User user : userList){
-      user.getGroups().add(group);
+      user.getGroupChats().add(groupChat);
     }
 
-    return group;
+    return groupChat;
   }
 
-  public void sendMessageToGroup(Message message, User sender, Group group) throws Exception {
-    LOGGER.info(SEND_MESSAGE, sender.getId(), sender.getName(), group.getId(), group.getName(),
+  public void sendMessageToGroup(Message message, User sender, GroupChat groupChat) throws Exception {
+    LOGGER.info(SEND_MESSAGE, sender.getId(), sender.getName(), groupChat.getId(), groupChat.getName(),
             message.getId(), message.getContent());
 
-    for (Group userGroups : sender.getGroups()){
-      if (userGroups.getId().equals(group.getId())){
+    for (GroupChat userGroups : sender.getGroupChats()){
+      if (userGroups.getId().equals(groupChat.getId())){
         userGroups.getMessages().add(message);
         return;
       }

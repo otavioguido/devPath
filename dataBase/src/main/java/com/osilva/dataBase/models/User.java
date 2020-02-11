@@ -10,23 +10,22 @@ public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
+  @Column(unique = true)
   private String login;
   private String password;
   private String name;
-  @Column(name = "IM")
-  @ElementCollection(targetClass = IM.class)
+  @ManyToMany(cascade = CascadeType.ALL)
   private List<IM> ims = new ArrayList<IM>();
-  @Column(name = "Group")
-  @ElementCollection(targetClass = Group.class)
-  private List<Group> groups = new ArrayList<Group>();
+  @ManyToMany(cascade = CascadeType.ALL)
+  private List<GroupChat> groupChats = new ArrayList<GroupChat>();
 
-  protected User() {}
-
-  private User(String login, String password, String name){
+  public User(String login, String password, String name) {
     this.login = login;
     this.password = password;
     this.name = name;
   }
+
+  public User(){}
 
   public long getId() {
     return id;
@@ -44,44 +43,55 @@ public class User {
     return password;
   }
 
-  @OneToMany
-  @JoinColumn(name = "IM_ID")
   public List<IM> getIms() {
     return ims;
   }
 
-  @OneToMany
-  @JoinColumn(name = "GROUP_ID")
-  public List<Group> getGroups() {
-    return groups;
+  public List<GroupChat> getGroupChats() {
+    return groupChats;
   }
 
-  public static Builder builder(){
-    return new Builder();
+  public void setId(long id) {
+    this.id = id;
   }
 
-  public static class Builder{
-    private String name;
-    private String login;
-    private String password;
+  public void setLogin(String login) {
+    this.login = login;
+  }
 
-    public Builder setName(String name){
-      this.name = name;
-      return this;
-    }
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
-    public Builder setLogin(String login){
-      this.login = login;
-      return this;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public Builder setPassword(String password){
-      this.password = password;
-      return this;
-    }
+  public void setIms(List<IM> ims) {
+    this.ims = ims;
+  }
 
-    public User build(){
-      return new User(login, password, name);
-    }
+  public void setGroupChats(List<GroupChat> groupChats) {
+    this.groupChats = groupChats;
+  }
+
+  public void addIM(IM im){
+    ims.add(im);
+    im.getUsers().add(this);
+  }
+
+  public void removeIM(IM im){
+    ims.remove(im);
+    im.getUsers().remove(this);
+  }
+
+  public void addGroup(GroupChat groupChat){
+    groupChats.add(groupChat);
+    groupChat.getUsers().add(this);
+  }
+
+  public void removeGroup(GroupChat groupChat){
+    groupChats.remove(groupChat);
+    groupChat.getUsers().remove(this);
   }
 }

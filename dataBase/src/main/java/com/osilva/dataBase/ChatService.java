@@ -1,6 +1,6 @@
 package com.osilva.dataBase;
 
-import com.osilva.dataBase.models.Group;
+import com.osilva.dataBase.models.GroupChat;
 import com.osilva.dataBase.models.IM;
 import com.osilva.dataBase.models.Message;
 import com.osilva.dataBase.models.User;
@@ -46,9 +46,9 @@ public class ChatService {
 
     public Iterable<IM> getAllIms() { return imRepository.findAll(); }
 
-    public void saveGroup(Group group){ groupRepository.save(group); }
+    public void saveGroup(GroupChat groupChat){ groupRepository.save(groupChat); }
 
-    public Iterable<Group> getGroupsFromUser(Iterable<Long> ids){ return groupRepository.findAllById(ids); }
+    public Iterable<GroupChat> getGroupsFromUser(Iterable<Long> ids){ return groupRepository.findAllById(ids); }
 
-    public Iterable<Group> getAllGroups() { return groupRepository.findAll(); }
+    public Iterable<GroupChat> getAllGroups() { return groupRepository.findAll(); }
 }

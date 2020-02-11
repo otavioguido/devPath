@@ -12,11 +12,11 @@ public class Message {
   private long id;
   private String content;
 
-  protected Message() {
+  public Message(String content) {
+    this.content = content;
   }
 
-  private Message(String content){
-    this.content = content;
+  public Message() {
   }
 
   public long getId() {
@@ -27,20 +27,11 @@ public class Message {
     return content;
   }
 
-  public static Builder builder(){
-    return new Builder();
+  public void setId(long id) {
+    this.id = id;
   }
 
-  public static class Builder{
-    private String content;
-
-    public Builder setContent(String content){
-      this.content = content;
-      return this;
-    }
-
-    public Message build(){
-      return new Message(content);
-    }
+  public void setContent(String content) {
+    this.content = content;
   }
 }
