@@ -16,6 +16,12 @@ docker run -d -p 8089:8089 --name chat-data-base --link mysql-chat:mysql chat-da
 docker container logs chat-data-base
 '''
 
+delete all container and remove app image
+'''
+docker rm -f $(docker ps -a -q)
+docker rmi chat-data-base
+'''
+
 Application manual:
 
 default path:

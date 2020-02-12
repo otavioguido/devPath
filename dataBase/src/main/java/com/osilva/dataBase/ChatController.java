@@ -1,5 +1,6 @@
 package com.osilva.dataBase;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.osilva.dataBase.models.GroupChat;
 import com.osilva.dataBase.models.IM;
 import com.osilva.dataBase.models.Message;
@@ -50,8 +51,18 @@ public class ChatController {
     public Iterable<Message> getAllMessages() { return chatService.getAllMessages(); }
 
     @PostMapping("/createIM")
-    public Long createIM(@RequestBody IM im){
+    public Long createIM(@RequestBody ObjectNode json){
+        User user1 = searchUserById((Long) json.get("user1").asLong());
+        User user2 = searchUserById((Long) json.get("user2").asLong());
+
+        IM im = new IM();
+        im.getUsers().add(user1);
+        im.getUsers().add(user2);
+        user1.getIms().add(im);
+        user2.getIms().add(im);
         chatService.saveIm(im);
+        chatService.saveUser(user1);
+        chatService.saveUser(user2);
         return im.getId();
     }
 

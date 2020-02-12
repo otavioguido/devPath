@@ -15,8 +15,14 @@ public class User {
   private String password;
   private String name;
   @ManyToMany(cascade = CascadeType.ALL)
+  @JoinTable(name="users_ims",
+          joinColumns = @JoinColumn(name = "im_id"),
+          inverseJoinColumns = @JoinColumn(name = "user_id"))
   private List<IM> ims = new ArrayList<IM>();
   @ManyToMany(cascade = CascadeType.ALL)
+  @JoinTable(name="users_groups",
+          joinColumns = @JoinColumn(name = "group_id"),
+          inverseJoinColumns = @JoinColumn(name = "user_id"))
   private List<GroupChat> groupChats = new ArrayList<GroupChat>();
 
   public User(String login, String password, String name) {
