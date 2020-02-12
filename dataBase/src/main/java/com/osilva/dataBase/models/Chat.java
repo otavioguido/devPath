@@ -10,6 +10,8 @@ public abstract class Chat {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
   @OneToMany(cascade = CascadeType.ALL)
+  @JoinTable(name = "chats_messages",
+          joinColumns = @JoinColumn(name = "message_id"))
   protected List<Message> messages = new ArrayList<Message>();
 
   public Chat() {

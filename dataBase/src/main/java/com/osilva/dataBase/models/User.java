@@ -15,15 +15,9 @@ public class User {
   private String password;
   private String name;
   @ManyToMany(cascade = CascadeType.ALL)
-  @JoinTable(name="users_ims",
-          joinColumns = @JoinColumn(name = "im_id"),
-          inverseJoinColumns = @JoinColumn(name = "user_id"))
-  private List<IM> ims = new ArrayList<IM>();
+  private List<Long> ims = new ArrayList<Long>();
   @ManyToMany(cascade = CascadeType.ALL)
-  @JoinTable(name="users_groups",
-          joinColumns = @JoinColumn(name = "group_id"),
-          inverseJoinColumns = @JoinColumn(name = "user_id"))
-  private List<GroupChat> groupChats = new ArrayList<GroupChat>();
+  private List<Long> groupChats = new ArrayList<Long>();
 
   public User(String login, String password, String name) {
     this.login = login;
@@ -49,11 +43,11 @@ public class User {
     return password;
   }
 
-  public List<IM> getIms() {
+  public List<Long> getIms() {
     return ims;
   }
 
-  public List<GroupChat> getGroupChats() {
+  public List<Long> getGroupChats() {
     return groupChats;
   }
 
@@ -73,31 +67,11 @@ public class User {
     this.name = name;
   }
 
-  public void setIms(List<IM> ims) {
+  public void setIms(List<Long> ims) {
     this.ims = ims;
   }
 
-  public void setGroupChats(List<GroupChat> groupChats) {
+  public void setGroupChats(List<Long> groupChats) {
     this.groupChats = groupChats;
-  }
-
-  public void addIM(IM im){
-    ims.add(im);
-    im.getUsers().add(this);
-  }
-
-  public void removeIM(IM im){
-    ims.remove(im);
-    im.getUsers().remove(this);
-  }
-
-  public void addGroup(GroupChat groupChat){
-    groupChats.add(groupChat);
-    groupChat.getUsers().add(this);
-  }
-
-  public void removeGroup(GroupChat groupChat){
-    groupChats.remove(groupChat);
-    groupChat.getUsers().remove(this);
   }
 }

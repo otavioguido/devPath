@@ -7,10 +7,10 @@ import java.util.List;
 @Entity
 public class GroupChat extends Chat {
   private String name;
-  @ManyToMany(mappedBy = "groupChats")
-  private List<User> users = new ArrayList<User>();
+  @ManyToMany(cascade = CascadeType.ALL)
+  private List<Long> users = new ArrayList<Long>();
 
-  public GroupChat(String name, List<User> users) {
+  public GroupChat(String name, List<Long> users) {
     this.name = name;
     this.users = users;
   }
@@ -22,7 +22,7 @@ public class GroupChat extends Chat {
     return name;
   }
 
-  public List<User> getUsers() {
+  public List<Long> getUsers() {
     return users;
   }
 
@@ -30,7 +30,7 @@ public class GroupChat extends Chat {
     this.name = name;
   }
 
-  public void setUsers(List<User> users) {
+  public void setUsers(List<Long> users) {
     this.users = users;
   }
 }
