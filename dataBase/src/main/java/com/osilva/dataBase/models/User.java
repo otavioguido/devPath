@@ -80,24 +80,4 @@ public class User {
   public void setGroupChats(List<GroupChat> groupChats) {
     this.groupChats = groupChats;
   }
-
-  public void addIM(IM im){
-    ims.add(im);
-    im.getUsers().add(this);
-  }
-
-  public void removeIM(IM im){
-    ims.remove(im);
-    im.getUsers().remove(this);
-  }
-
-  public void addGroup(GroupChat groupChat){
-    groupChats.add(groupChat);
-    groupChat.getUsers().add(this);
-  }
-
-  public void removeGroup(GroupChat groupChat){
-    groupChats.remove(groupChat);
-    groupChat.getUsers().remove(this);
-  }
 }

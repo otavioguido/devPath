@@ -8,20 +8,20 @@ import java.util.List;
 @Entity
 public class IM extends Chat {
   @ManyToMany(cascade = CascadeType.ALL)
-  private List<Long> users = new ArrayList<Long>(2);
+  private List<User> users = new ArrayList<User>(2);
 
-  public IM(List<Long> users) {
+  public IM(List<User> users) {
     this.users = users;
   }
 
   public IM() {
   }
 
-  public List<Long> getUsers() {
+  public List<User> getUsers() {
     return users;
   }
 
-  public void setUsers(List<Long> users) {
+  public void setUsers(List<User> users) {
     this.users = users;
   }
 }
