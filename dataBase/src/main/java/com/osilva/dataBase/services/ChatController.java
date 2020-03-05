@@ -1,4 +1,4 @@
-package com.osilva.dataBase;
+package com.osilva.dataBase.services;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.osilva.dataBase.models.GroupChat;

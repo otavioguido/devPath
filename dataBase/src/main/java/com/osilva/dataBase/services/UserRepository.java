@@ -1,4 +1,4 @@
-package com.osilva.dataBase;
+package com.osilva.dataBase.services;
 
 import com.osilva.dataBase.models.User;
 import org.springframework.data.repository.CrudRepository;
