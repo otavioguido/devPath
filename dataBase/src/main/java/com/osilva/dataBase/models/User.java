@@ -9,14 +9,14 @@ public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private long id;
+  private Long id;
   @Column(unique = true)
   private String login;
   private String password;
   private String name;
-  @ManyToMany(cascade = CascadeType.ALL)
+  @ElementCollection(targetClass = Long.class)
   private List<Long> ims = new ArrayList<Long>();
-  @ManyToMany(cascade = CascadeType.ALL)
+  @ElementCollection(targetClass = Long.class)
   private List<Long> groupChats = new ArrayList<Long>();
 
   public User(String login, String password, String name) {

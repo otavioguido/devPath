@@ -9,15 +9,13 @@ public abstract class Chat {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
-  @OneToMany(cascade = CascadeType.ALL)
-  @JoinTable(name = "chats_messages",
-          joinColumns = @JoinColumn(name = "message_id"))
-  protected List<Message> messages = new ArrayList<Message>();
+  @ElementCollection(targetClass = Long.class)
+  protected List<Long> messages = new ArrayList<Long>();
 
   public Chat() {
   }
 
-  public List<Message> getMessages() {
+  public List<Long> getMessages() {
     return this.messages;
   }
 
@@ -29,7 +27,7 @@ public abstract class Chat {
     this.id = id;
   }
 
-  public void setMessages(List<Message> messages) {
+  public void setMessages(List<Long> messages) {
     this.messages = messages;
   }
 }

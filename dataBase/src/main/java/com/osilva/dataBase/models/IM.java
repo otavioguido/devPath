@@ -7,7 +7,6 @@ import java.util.List;
 
 @Entity
 public class IM extends Chat {
-  @ManyToMany(cascade = CascadeType.ALL)
   private List<Long> users = new ArrayList<Long>(2);
 
   public IM(List<Long> users) {

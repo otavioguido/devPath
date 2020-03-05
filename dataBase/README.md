@@ -1,25 +1,30 @@
 Build jar docker image:
 '''
-docker build -t chat-data-base .
+docker build -t chat-data-base-image .
 '''
 
 Pull mysql image and start mysql container
 '''
-docker pull mysql
-docker run -p 3306:3306 --name mysql-chat -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=chat_db -e MYSQL_USER=devpath -e MYSQL_PASSWORD=password -d mysql
-docker container logs mysql-chat
+docker pull mysql:latest
+docker run -p 3306:3306 --name mysql-container -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=chat_db -e MYSQL_USER=devpath -e MYSQL_PASSWORD=password -d mysql
+docker container logs mysql-container
 '''
 
 start application container
 '''
-docker run -d -p 8089:8089 --name chat-data-base --link mysql-chat:mysql chat-data-base
-docker container logs chat-data-base
+docker run -d -p 8089:8089 --name chat-data-base-container --link mysql-container:mysql chat-data-base-image
+docker container logs chat-data-base-container
+'''
+
+Docker-compose command
+'''
+docker-compose up -d
 '''
 
 delete all container and remove app image
 '''
 docker rm -f $(docker ps -a -q)
-docker rmi chat-data-base
+docker rmi chat-data-base-image
 '''
 
 Application manual:

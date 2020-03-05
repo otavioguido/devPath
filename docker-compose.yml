@@ -3,7 +3,7 @@ version: "3.7"
 services:
 
   mysql:
-    image: mysql
+    image: mysql:latest
     ports:
       - "3306:3306"
     env_file:
@@ -17,4 +17,8 @@ services:
     ports:
     - "8089:8089"
     container_name: chat-data-base-container
+    environment:
+      - DBHOST=mysql
+    depends_on:
+      - mysql
 

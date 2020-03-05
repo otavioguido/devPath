@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 public class GroupChat extends Chat {
   private String name;
-  @ManyToMany(cascade = CascadeType.ALL)
+  @ElementCollection(targetClass = Long.class)
   private List<Long> users = new ArrayList<Long>();
 
   public GroupChat(String name, List<Long> users) {
