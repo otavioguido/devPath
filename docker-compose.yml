@@ -1,0 +1,8 @@
+version: "3.7"
+services:
+  dataBase:
+    build:
+      context: ./dataBase
+    container_name: chat-data-base
+  mySql:
+    command: docker run -p 3306:3306 --name mysql-chat -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=chat_db -e MYSQL_USER=devpath -e MYSQL_PASSWORD=password -d mysql
