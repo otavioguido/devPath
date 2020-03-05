@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UserActionServiceTest {
 
-    @Test
+    /*@Test
     public void sendMessageInIM(){
         User sender = new User.Builder().setName("sender").build();
         User receiver = new User.Builder().setName("receiver").build();
@@ -54,5 +54,5 @@ public class UserActionServiceTest {
             Group group = new Group.Builder().build();
             userActionService.sendMessageToGroup(message, user1, group);
         });
-    }
+    }*/
 }

@@ -1,10 +1,6 @@
 package com.app.utils;
 
 
-import com.osilva.dataBase.models.GroupChat;
-import com.osilva.dataBase.models.IM;
-import com.osilva.dataBase.models.Message;
-import com.osilva.dataBase.models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.List;
@@ -17,7 +13,7 @@ public class UserActionService {
 
   }
 
-  public void sendMessageToIM(Message message, User sender, User receiver){
+  /*public void sendMessageToIM(Message message, User sender, User receiver){
     LOGGER.info(SEND_MESSAGE, sender.getId(), sender.getName(), receiver.getId(), receiver.getName(),
             message.getId(), message.getContent());
 
@@ -58,6 +54,6 @@ public class UserActionService {
       }
     }
     throw new Exception(GROUP_NOT_FOUND);
-  }
+  }*/
 
 }
