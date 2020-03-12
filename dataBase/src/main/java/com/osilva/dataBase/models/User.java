@@ -1,8 +1,7 @@
 package com.osilva.dataBase.models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -14,10 +13,12 @@ public class User {
   private String login;
   private String password;
   private String name;
-  @ElementCollection(targetClass = Long.class)
-  private List<Long> ims = new ArrayList<Long>();
-  @ElementCollection(targetClass = Long.class)
-  private List<Long> groupChats = new ArrayList<Long>();
+  @ElementCollection(targetClass = String.class)
+  @CollectionTable(name = "user_ims", joinColumns = @JoinColumn(name = "user_id"))
+  private Set<String> ims;
+  @ElementCollection(targetClass = String.class)
+  @CollectionTable(name = "user_groups", joinColumns = @JoinColumn(name = "user_id"))
+  private Set<String> groupChats;
 
   public User(String login, String password, String name) {
     this.login = login;
@@ -43,11 +44,11 @@ public class User {
     return password;
   }
 
-  public List<Long> getIms() {
+  public Set<String> getIms() {
     return ims;
   }
 
-  public List<Long> getGroupChats() {
+  public Set<String> getGroupChats() {
     return groupChats;
   }
 
@@ -67,11 +68,11 @@ public class User {
     this.name = name;
   }
 
-  public void setIms(List<Long> ims) {
+  public void setIms(Set<String> ims) {
     this.ims = ims;
   }
 
-  public void setGroupChats(List<Long> groupChats) {
+  public void setGroupChats(Set<String> groupChats) {
     this.groupChats = groupChats;
   }
 }

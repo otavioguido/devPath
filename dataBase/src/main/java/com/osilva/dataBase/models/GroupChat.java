@@ -2,15 +2,18 @@ package com.osilva.dataBase.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class GroupChat extends Chat {
   private String name;
-  @ElementCollection(targetClass = Long.class)
-  private List<Long> users = new ArrayList<Long>();
+  @ElementCollection(targetClass = String.class)
+  @CollectionTable(name = "group_users", joinColumns = @JoinColumn(name = "chat_id"))
+  private Set<String> users = new HashSet<String>();
 
-  public GroupChat(String name, List<Long> users) {
+  public GroupChat(String name, Set<String> users) {
     this.name = name;
     this.users = users;
   }
@@ -22,7 +25,7 @@ public class GroupChat extends Chat {
     return name;
   }
 
-  public List<Long> getUsers() {
+  public Set<String> getUsers() {
     return users;
   }
 
@@ -30,7 +33,7 @@ public class GroupChat extends Chat {
     this.name = name;
   }
 
-  public void setUsers(List<Long> users) {
+  public void setUsers(Set<String> users) {
     this.users = users;
   }
 }

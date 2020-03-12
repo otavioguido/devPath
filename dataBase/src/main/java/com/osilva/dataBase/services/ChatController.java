@@ -56,10 +56,10 @@ public class ChatController {
         User user2 = searchUserById((Long) json.get("user2").asLong());
 
         IM im = new IM();
-        im.getUsers().add(user1.getId());
-        im.getUsers().add(user2.getId());
-        user1.getIms().add(im.getId());
-        user2.getIms().add(im.getId());
+        im.getUsers().add(Long.toString(user1.getId()));
+        im.getUsers().add(Long.toString(user2.getId()));
+        user1.getIms().add(Long.toString(im.getId()));
+        user2.getIms().add(Long.toString(im.getId()));
         chatService.saveIm(im);
         chatService.saveUser(user1);
         chatService.saveUser(user2);

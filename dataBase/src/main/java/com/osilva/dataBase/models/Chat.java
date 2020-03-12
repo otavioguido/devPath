@@ -1,21 +1,22 @@
 package com.osilva.dataBase.models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @MappedSuperclass
 public abstract class Chat {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
-  @ElementCollection(targetClass = Long.class)
-  protected List<Long> messages = new ArrayList<Long>();
+  @ElementCollection(targetClass = String.class)
+  @CollectionTable(name = "chat_msgs", joinColumns = @JoinColumn(name = "chat_id"))
+  protected Set<String> messages = new HashSet<String>();
 
   public Chat() {
   }
 
-  public List<Long> getMessages() {
+  public Set<String> getMessages() {
     return this.messages;
   }
 
@@ -27,7 +28,7 @@ public abstract class Chat {
     this.id = id;
   }
 
-  public void setMessages(List<Long> messages) {
+  public void setMessages(Set<String> messages) {
     this.messages = messages;
   }
 }

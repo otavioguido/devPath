@@ -12,16 +12,12 @@ import java.util.Optional;
 @Service
 public class ChatService {
 
-    @Autowired
     UserRepository userRepository;
 
-    @Autowired
     ImRepository imRepository;
 
-    @Autowired
     GroupRepository groupRepository;
 
-    @Autowired
     MessageRepository messageRepository;
 
     public void saveUser(User user){
