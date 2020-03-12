@@ -11,7 +11,7 @@ public class GroupChat extends Chat {
   private String name;
   @ElementCollection(targetClass = String.class)
   @CollectionTable(name = "group_users", joinColumns = @JoinColumn(name = "chat_id"))
-  private Set<String> users = new HashSet<String>();
+  private Set<String> users;
 
   public GroupChat(String name, Set<String> users) {
     this.name = name;

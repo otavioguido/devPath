@@ -58,9 +58,9 @@ public class ChatController {
         IM im = new IM();
         im.getUsers().add(Long.toString(user1.getId()));
         im.getUsers().add(Long.toString(user2.getId()));
+        chatService.saveIm(im);
         user1.getIms().add(Long.toString(im.getId()));
         user2.getIms().add(Long.toString(im.getId()));
-        chatService.saveIm(im);
         chatService.saveUser(user1);
         chatService.saveUser(user2);
         return im.getId();

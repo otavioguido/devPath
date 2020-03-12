@@ -11,7 +11,7 @@ public abstract class Chat {
   private long id;
   @ElementCollection(targetClass = String.class)
   @CollectionTable(name = "chat_msgs", joinColumns = @JoinColumn(name = "chat_id"))
-  protected Set<String> messages = new HashSet<String>();
+  protected Set<String> messages;
 
   public Chat() {
   }

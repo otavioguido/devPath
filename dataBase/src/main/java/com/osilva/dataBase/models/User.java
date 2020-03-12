@@ -8,7 +8,7 @@ public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long id;
+  private long id;
   @Column(unique = true)
   private String login;
   private String password;
