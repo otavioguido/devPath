@@ -1,4 +1,4 @@
-package com.osilva.dataBase.services;
+package com.osilva.dataBase.repositories;
 
 import com.osilva.dataBase.models.IM;
 import org.springframework.data.jpa.repository.JpaRepository;
