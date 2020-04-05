@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-@EnableAutoConfiguration
 @SpringBootApplication
 @EntityScan("com.osilva.dataBase.models")
 public class DataBaseApplication {
