@@ -30,4 +30,13 @@ public class GroupChat extends Chat{
   public void setUsers(Set<User> users) {
     this.users = users;
   }
+
+  @Override
+  public String toString() {
+    return "GroupChat{" +
+        "name='" + name + '\'' +
+        ", users=" + users +
+        ", id=" + id +
+        '}';
+  }
 }

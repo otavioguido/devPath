@@ -20,4 +20,12 @@ public class Im extends Chat{
   public void setUsers(Set<User> users) {
     this.users = users;
   }
+
+  @Override
+  public String toString() {
+    return "Im{" +
+        "users=" + users +
+        ", id=" + id +
+        '}';
+  }
 }

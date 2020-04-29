@@ -12,7 +12,7 @@ public abstract class AbstractEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private UUID id;
+  protected UUID id;
 
   public UUID getId() {
     return id;
