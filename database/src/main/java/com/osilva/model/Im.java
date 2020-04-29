@@ -2,6 +2,7 @@ package com.osilva.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 
@@ -9,6 +10,7 @@ import javax.persistence.ManyToMany;
 public class Im extends Chat{
 
   @ManyToMany(mappedBy = "ims")
+  @Column(nullable = false)
   private Set<User> users;
 
   public Set<User> getUsers() {

@@ -1,0 +1,7 @@
+com/osilva/model/AbstractEntity.class
+com/osilva/model/Chat.class
+com/osilva/model/User.class
+com/osilva/model/GroupChat.class
+com/osilva/DataBaseApplication.class
+com/osilva/model/Message.class
+com/osilva/model/Im.class
