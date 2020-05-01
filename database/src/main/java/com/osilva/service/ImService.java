@@ -12,5 +12,7 @@ public interface ImService {
 
   Im findByUser(User user);
 
+  Im findImChat(User user, User contact);
+
   void deleteIm(Im im);
 }

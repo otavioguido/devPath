@@ -21,9 +21,11 @@ public class GroupChatServiceImpl {
     return repository.findAll(pageable);
   }
 
-  public Page<GroupChat> findGroupChatByName(User user){
+  public Page<GroupChat> findGroupChatByUser(User user){
     return repository.findByUsers(user);
   }
 
-  //public Page<>
+  public Page<GroupChat> findGroupChatByName(String name){
+    return repository.findByName(name);
+  }
 }

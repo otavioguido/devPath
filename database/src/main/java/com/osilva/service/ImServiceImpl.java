@@ -31,6 +31,11 @@ public class ImServiceImpl implements ImService {
   }
 
   @Override
+  public Im findImChat(User user, User contact){
+    return imRepository.findByUsersAndUsers(user, contact);
+  }
+
+  @Override
   public void deleteIm(Im im){
     imRepository.delete(im);
   }
