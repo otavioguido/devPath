@@ -5,6 +5,7 @@ import com.osilva.model.User;
 import com.osilva.repository.ImRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +27,8 @@ public class ImServiceImpl implements ImService {
   }
 
   @Override
-  public Im findByUser(User user){
-    return imRepository.findByUsers(user);
+  public Page<Im> findByUser(User user, PageRequest pageRequest){
+    return imRepository.findByUsers(user, pageRequest);
   }
 
   @Override

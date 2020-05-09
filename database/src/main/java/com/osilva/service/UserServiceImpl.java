@@ -19,7 +19,6 @@ public class UserServiceImpl implements UserService {
   @Override
   public void saveUser(User user){
     User savedUser = userRepository.saveAndFlush(user);
-
   }
 
   @Override
@@ -30,6 +29,11 @@ public class UserServiceImpl implements UserService {
   @Override
   public Optional<User> getUser(UUID id){
     return userRepository.findById(id);
+  }
+
+  @Override
+  public User getUserByName(String name) {
+    return userRepository.findByName(name);
   }
 
   @Override

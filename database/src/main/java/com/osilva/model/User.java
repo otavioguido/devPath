@@ -17,6 +17,13 @@ public class User extends AbstractEntity{
   @ManyToMany(cascade = CascadeType.ALL)
   private Set<GroupChat> groupChats;
 
+  public User(String name) {
+    this.name = name;
+  }
+
+  public User() {
+  }
+
   public Set<GroupChat> getGroupChats() {
     return groupChats;
   }

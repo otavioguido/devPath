@@ -3,6 +3,7 @@ package com.osilva.service;
 import com.osilva.model.Im;
 import com.osilva.model.User;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 public interface ImService {
@@ -10,7 +11,7 @@ public interface ImService {
 
   Page<Im> findAllIms(Pageable pageable);
 
-  Im findByUser(User user);
+  Page<Im> findByUser(User user, PageRequest pageRequest);
 
   Im findImChat(User user, User contact);
 

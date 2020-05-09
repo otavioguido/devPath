@@ -5,27 +5,38 @@ import com.osilva.model.User;
 import com.osilva.repository.GroupChatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class GroupChatServiceImpl {
+public class GroupChatServiceImpl implements GroupChatService {
+
   @Autowired
   private GroupChatRepository repository;
 
+  @Override
   public void saveGroup(GroupChat groupChat){
     repository.saveAndFlush(groupChat);
   }
 
+  @Override
   public Page<GroupChat> findAllGroupChat(Pageable pageable){
     return repository.findAll(pageable);
   }
 
-  public Page<GroupChat> findGroupChatByUser(User user){
-    return repository.findByUsers(user);
+  @Override
+  public Page<GroupChat> findGroupChatByUser(User user, PageRequest pageRequest){
+    return repository.findByUsers(user, pageRequest);
   }
 
-  public Page<GroupChat> findGroupChatByName(String name){
-    return repository.findByName(name);
+  @Override
+  public Page<GroupChat> findGroupChatByName(String name, PageRequest pageRequest){
+    return repository.findByName(name, pageRequest);
+  }
+
+  @Override
+  public void deleteGroupChat(GroupChat groupChat) {
+    repository.delete(groupChat);
   }
 }
