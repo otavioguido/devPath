@@ -26,16 +26,6 @@ public class GroupChatServiceImpl implements GroupChatService {
   }
 
   @Override
-  public Page<GroupChat> findGroupChatByUser(User user, PageRequest pageRequest){
-    return repository.findByUsers(user, pageRequest);
-  }
-
-  @Override
-  public Page<GroupChat> findGroupChatByName(String name, PageRequest pageRequest){
-    return repository.findByName(name, pageRequest);
-  }
-
-  @Override
   public void deleteGroupChat(GroupChat groupChat) {
     repository.delete(groupChat);
   }

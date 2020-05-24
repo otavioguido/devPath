@@ -20,7 +20,7 @@ public class UserRepositoryTest {
   private UserRepository userRepository;
 
   @Test
-  public void whenFindByName_thenReturnUser(){
+  public void findUserByName(){
     // given
     User user = new User("user");
     testEntityManager.persist(user);

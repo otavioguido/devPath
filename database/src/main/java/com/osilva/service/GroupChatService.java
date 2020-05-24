@@ -11,9 +11,5 @@ public interface GroupChatService {
 
   Page<GroupChat> findAllGroupChat(Pageable pageable);
 
-  Page<GroupChat> findGroupChatByUser(User user, PageRequest pageRequest);
-
-  Page<GroupChat> findGroupChatByName(String name, PageRequest pageRequest);
-
   void deleteGroupChat(GroupChat groupChat);
 }
